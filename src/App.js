@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Admin from './components/Admin/Admin';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
@@ -28,6 +29,9 @@ const App = () => {
         </Route>
         <Route path="/orderComplete">
           <OrderComplete />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
         <Route path="*">
           <NotFound />
