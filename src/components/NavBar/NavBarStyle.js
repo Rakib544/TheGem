@@ -27,6 +27,14 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    color: 'black'
+    color: '#fff',
+    backgroundColor: 'red',
+    height: '35px',
+    width: '90px',
+    margin: '7px 7px',
+    borderRadius: '15px',
+    "&:hover": {
+      backgroundColor: "red"
+  }
   }
 }));

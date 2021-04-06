@@ -1,6 +1,7 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import banner from '../../images/banner.jpg';
+import { NavBar } from '../NavBar/NavBar';
 const useStyles = makeStyles(theme => ({
     background: {
         backgroundImage: `url(${banner})`,
@@ -46,6 +47,7 @@ const Banner = () => {
     const classes = useStyles()
     return (
         <div className={classes.background}>
+             <NavBar />
             <div className={classes.div}>
                <Typography variant="h3" color="secondary" align="center">
                    Best Things waiting for you

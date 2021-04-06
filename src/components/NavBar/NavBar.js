@@ -1,4 +1,4 @@
-import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@material-ui/core';
 import React, { useContext } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router';
@@ -81,7 +81,7 @@ export const NavBar = () => {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="static" style={{ backgroundColor: '#fff', boxShadow: '0 0 0 0' }}>
+            <AppBar position="static" style={{ backgroundColor: 'rgba(0,0,0,0.4)', boxShadow: '0 0 0 0' }}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -90,10 +90,10 @@ export const NavBar = () => {
                         aria-label="open drawer"
                     >
                     </IconButton>
-                    <img src={logo} alt="logo" style={{height: '60px', marginLeft:'-30px'}}/>
+                    <img src={logo} alt="logo" style={{ height: '60px', marginLeft: '-30px' }} />
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton onClick={goToOrdersPage}><ShoppingCartIcon /></IconButton>
+                        <IconButton onClick={goToOrdersPage} style={{color: '#fff'}}><ShoppingCartIcon /></IconButton>
                         <Button onClick={goToAdminPage} className={classes.button}>Admin</Button>
                         {/* {
                             loggedUser.email ? (
@@ -112,7 +112,6 @@ export const NavBar = () => {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="primary"
                         >
                             <MenuIcon />
                         </IconButton>
