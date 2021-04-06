@@ -5,6 +5,7 @@ import AppsIcon from '@material-ui/icons/Apps';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import AddFood from './AddFood';
+import ManageProduct from './ManageProduct';
 
 const useStyles = makeStyles(theme => ({
     leftSide: {
@@ -48,6 +49,7 @@ const Admin = () => {
                 </Grid>
                 <Grid item lg={9} md={9} xsm={12} xs={12}>
                     <AddFood />
+                    <ManageProduct />
                 </Grid>
             </Grid>
         </div>

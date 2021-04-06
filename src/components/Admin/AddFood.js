@@ -59,7 +59,7 @@ const AddFood = () => {
     }
     const onSubmit = data => {
         let productData = { imageURL, ...data }
-        fetch('http://localhost:8080/addProduct', {
+        fetch('http://localhost:8080/addFood', {
             method: "POST",
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(productData)
