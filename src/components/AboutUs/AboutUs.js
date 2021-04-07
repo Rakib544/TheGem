@@ -54,7 +54,7 @@ const AboutUs = () => {
                                         <Typography variant="subtitle2">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, ad.
                                         </Typography>
-                                        <Button endIcon={<ArrowRightAltIcon />}>See more</Button>
+                                        <Button endIcon={<ArrowRightAltIcon />} color="secondary">See more</Button>
                                     </Grid>
                                 </Grid>
                             </CardContent>
@@ -79,7 +79,7 @@ const AboutUs = () => {
                                         <Typography variant="subtitle2">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, ad.
                                         </Typography>
-                                        <Button endIcon={<ArrowRightAltIcon />}>See more</Button>
+                                        <Button endIcon={<ArrowRightAltIcon />} color="secondary">See more</Button>
                                     </Grid>
                                 </Grid>
                             </CardContent>
@@ -104,7 +104,7 @@ const AboutUs = () => {
                                         <Typography variant="subtitle2">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, ad.
                                         </Typography>
-                                        <Button endIcon={<ArrowRightAltIcon />}>See more</Button>
+                                        <Button endIcon={<ArrowRightAltIcon />} color="secondary">See more</Button>
                                     </Grid>
                                 </Grid>
                             </CardContent>

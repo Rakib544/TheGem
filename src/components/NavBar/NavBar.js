@@ -1,14 +1,21 @@
-import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@material-ui/core';
-import React, { useContext } from 'react';
+import { AppBar, Badge, Button, IconButton, Menu, MenuItem, Toolbar } from '@material-ui/core';
+import React, { useContext, useEffect, useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router';
 import { useStyles } from './NavBarStyle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import logo from '../../images/logo.png'
+import {getDatabaseCart} from '../LocalStrogeManager/DatabaseCartmanager'
 // import { UserContext } from '../../App';
 
 
 export const NavBar = () => {
+    const [savedItem, setSavedItem] = useState(0)
+    useEffect(() => {
+        const savedItems = getDatabaseCart()
+        const objArray = Object.keys(savedItems)
+        setSavedItem(objArray.length)
+    }, [])
     //   const [loggedUser] = useContext(UserContext)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -34,7 +41,7 @@ export const NavBar = () => {
         history.push('/')
     }
     const goToOrdersPage = () => {
-        history.push('/orders')
+        history.push('/placeOrder')
     }
     const goToLoginPage = () => {
         history.push('/login')
@@ -59,7 +66,7 @@ export const NavBar = () => {
                 <Button onClick={goToHomePage}>Home</Button>
             </MenuItem>
             <MenuItem onClick={goToOrdersPage}>
-                <IconButton><ShoppingCartIcon /></IconButton>
+                <Badge badgeContent={savedItem} color="primary"><IconButton><ShoppingCartIcon /></IconButton></Badge>
             </MenuItem>
             <MenuItem>
                 <Button onClick={goToAdminPage}>Admin</Button>
@@ -93,7 +100,11 @@ export const NavBar = () => {
                     <img src={logo} alt="logo" style={{ height: '60px', marginLeft: '-30px' }} />
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton onClick={goToOrdersPage} style={{color: '#fff'}}><ShoppingCartIcon /></IconButton>
+                        <Badge badgeContent={savedItem} color="primary"> 
+                            <IconButton onClick={goToOrdersPage} style={{ color: '#fff' }}>
+                                <ShoppingCartIcon />
+                            </IconButton>
+                        </Badge>
                         <Button onClick={goToAdminPage} className={classes.button}>Admin</Button>
                         {/* {
                             loggedUser.email ? (
