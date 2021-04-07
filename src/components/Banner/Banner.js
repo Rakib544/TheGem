@@ -1,10 +1,10 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
-import banner from '../../images/banner.jpg';
 import { NavBar } from '../NavBar/NavBar';
+const ban = `https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60`
 const useStyles = makeStyles(theme => ({
     background: {
-        backgroundImage: `url(${banner})`,
+        backgroundImage: `url(${ban})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         border: '0',
         outline: 'none',
         "@media(max-width: 900px)" : {
-            width: '90%'
+            width: '70%'
         }
     },
     button: {
@@ -49,7 +49,7 @@ const Banner = () => {
         <div className={classes.background}>
              <NavBar />
             <div className={classes.div}>
-               <Typography variant="h3" color="secondary" align="center">
+               <Typography variant="h3" style={{color: '#fff'}} align="center">
                    Best Things waiting for you
                </Typography>
                <div className={classes.searchParent}>

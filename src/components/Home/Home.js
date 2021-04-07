@@ -1,6 +1,8 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import AboutUs from '../AboutUs/AboutUs';
 import Banner from '../Banner/Banner';
+import Footer from '../Footer/Footer';
 import SingleFoodCart from '../SignleFoodCart/SingleFoodCart';
 
 const useStyles = makeStyles(() => ({
@@ -26,8 +28,15 @@ const Home = () => {
     useEffect(() => {
         fetch('http://localhost:8080/foods')
             .then(res => res.json())
-            .then(data => setFoods(data))
+            .then(data => {
+                setFoods(data)
+                setFilteredFoods(data)
+            })
     }, [])
+
+    const showAllFood = () => {
+        setFilteredFoods(foods);
+    }
 
     const filteredFood = foodType => {
         const filterFoods = foods.filter(food => food.foodType === foodType)
@@ -37,6 +46,7 @@ const Home = () => {
         <div style={{ overflow: 'hidden' }}>
             <Banner />
             <ul className={classes.ul}>
+                <li className={classes.li} onClick={showAllFood}>All</li>
                 <li className={classes.li} onClick={() => filteredFood("breakfast")}>BreakFast</li>
                 <li className={classes.li} onClick={() => filteredFood("lunch")}>Lunch</li>
                 <li className={classes.li} onClick={() => filteredFood("dinner")}>Dinner</li>
@@ -48,6 +58,8 @@ const Home = () => {
                     }
                 </Grid>
             </Container>
+            <AboutUs />
+            <Footer />
         </div>
     );
 };

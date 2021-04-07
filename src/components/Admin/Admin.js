@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
     logo: {
         height: '60px',
         display: 'block',
-        margin: 'auto'
+        margin: 'auto',
+        cursor: 'pointer'
     },
     button: {
         color: '#fff'
@@ -47,11 +48,14 @@ const Admin = () => {
     const goToEditProductPage = () => {
         history.push(`${url}/editProducts`)
     }
+    const goToHomePage = () => {
+        history.push('/home')
+    }
     return (
         <div>
             <Grid container>
                 <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSide}>
-                    <div>
+                    <div onClick={goToHomePage}>
                         <img src={logo} alt="logo" className={classes.logo} />
                     </div>
                     <div className={classes.buttonContainer}>
