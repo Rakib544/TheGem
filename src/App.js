@@ -7,6 +7,7 @@ import NotFound from './components/NotFound/NotFound';
 import OrderComplete from './components/OrderComplete/OrderComplete';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import ProductDetails from './components/ProductDetails/ProductDetails'
+import SingleFoodDetails from './components/SingleFoodDetails/SingleFoodDetails';
 
 const App = () => {
   return (
@@ -32,6 +33,9 @@ const App = () => {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/food/:id">
+          <SingleFoodDetails />
         </Route>
         <Route path="*">
           <NotFound />

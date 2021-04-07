@@ -1,5 +1,5 @@
-import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
-import React, { useContext, useEffect, useState } from 'react';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import SingleProductRow from './SingleProductRow';
 // import Spinner from '../../Spinner/Spinner';
 

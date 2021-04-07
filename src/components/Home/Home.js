@@ -22,18 +22,17 @@ const Home = () => {
     const classes = useStyles()
     const [filteredFoods, setFilteredFoods] = useState([])
     const [foods, setFoods] = useState([])
+
     useEffect(() => {
         fetch('http://localhost:8080/foods')
             .then(res => res.json())
             .then(data => setFoods(data))
-            filteredFood()
     }, [])
 
-    const filteredFood = (foodType, type="breakfast") => {
-        const breakFast = foods.filter(food => food.foodType === (foodType || type))
-       setFilteredFoods(breakFast)
+    const filteredFood = foodType => {
+        const filterFoods = foods.filter(food => food.foodType === foodType)
+        setFilteredFoods(filterFoods)
     }
-
     return (
         <div style={{ overflow: 'hidden' }}>
             <Banner />

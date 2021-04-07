@@ -1,5 +1,6 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -19,9 +20,14 @@ const useStyles = makeStyles(theme => ({
 
 const SingleFoodCart = ({ food }) => {
     const classes = useStyles()
-    const {name, imageURL, price} = food;
+    const {name, imageURL, price, _id} = food;
+    const history = useHistory();
+    
+    const handleShowProductDetails = id => {
+       history.push(`/food/${id}`);
+    }
     return (
-        <Grid item lg={4} md={3} sm={6} xs={12}>
+        <Grid item lg={4} md={3} sm={6} xs={12} onClick={() => handleShowProductDetails(_id)}>
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia>
