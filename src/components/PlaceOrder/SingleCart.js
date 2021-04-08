@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: '40px'
     },
     grid: {
-        padding: '10px',
+        padding: '5px',
         backgroundColor: '#f7f7f7',
         margin: '10px',
         borderRadius: '10px'
