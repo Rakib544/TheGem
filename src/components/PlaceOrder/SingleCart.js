@@ -2,6 +2,7 @@ import { ButtonGroup, Grid, IconButton, makeStyles, Typography } from '@material
 import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove'
+import { addToDatabaseCart, getDatabaseCart } from '../LocalStrogeManager/DatabaseCartmanager';
 
 const useStyles = makeStyles(theme => ({
     buttonGroup: {
@@ -26,11 +27,24 @@ const SingleCart = ({ food }) => {
     const handleDecrementQuantity = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1)
+            const localStorageCart = getDatabaseCart()
+            const cartKeys = Object.keys(localStorageCart)
+            const match = cartKeys.find(key => key === food._id)
+            if (match) {
+                addToDatabaseCart(match, quantity - 1)
+            }
         }
     }
     const handleIncrementQuantity = () => {
         setQuantity(quantity + 1)
+        const localStorageCart = getDatabaseCart()
+        const cartKeys = Object.keys(localStorageCart)
+        const match = cartKeys.find(key => key === food._id)
+        if (match) {
+            addToDatabaseCart(match, quantity + 1)
+        }
     }
+
     return (
         <Grid container item lg={12} spacing={3} className={classes.grid} alignItems="center">
             <Grid item lg={3}>
@@ -45,7 +59,7 @@ const SingleCart = ({ food }) => {
                 </Typography>
             </Grid>
             <Grid item lg={5}>
-                <ButtonGroup color="secondary"  className={classes.buttonGroup}>
+                <ButtonGroup color="secondary" className={classes.buttonGroup}>
                     <IconButton onClick={handleDecrementQuantity} size="small">
                         <RemoveIcon />
                     </IconButton>

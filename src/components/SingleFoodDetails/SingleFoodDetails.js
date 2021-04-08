@@ -1,10 +1,8 @@
-import { Button, ButtonGroup, Container, Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
+import { Button, Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { addToDatabaseCart } from '../LocalStrogeManager/DatabaseCartmanager';
+import { addToDatabaseCart, getDatabaseCart } from '../LocalStrogeManager/DatabaseCartmanager';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -20,15 +18,6 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         marginBottom: '10px'
-    },
-    buttonGroup: {
-        border: '1px solid gray',
-        borderRadius: '30px',
-        marginLeft: '30px',
-        height: '42px'
-    },
-    quantity: {
-        lineHeight: '40px'
     },
     button: {
         padding: '8px 20px',
@@ -49,17 +38,15 @@ const SingleFoodDetails = () => {
             .then(data => setSelectedFood(data))
     }, [id])
 
-    const handleDecrementQuantity = () => {
-        if(quantity > 1) {
-            setQuantity(quantity - 1)
-        }
-    }
-    const handleIncrementQuantity = () => {
-        setQuantity(quantity + 1)
-    }
-
     const handleAddToCart = () => {
-        addToDatabaseCart(id, quantity)
+        const localStorageCart = getDatabaseCart();
+        const savedItem = Object.keys(localStorageCart)
+        const sameItem = savedItem.find(key => key === id)
+        if (sameItem) {
+            alert('Already added this product')
+        } else {
+            addToDatabaseCart(id, quantity)
+        }
     }
 
     const { name, price, imageURL, description } = selectedFood;
@@ -77,17 +64,6 @@ const SingleFoodDetails = () => {
                         <Typography variant="h5">
                             $ {price}
                         </Typography>
-                        <ButtonGroup color="secondary" className={classes.buttonGroup}>
-                            <IconButton onClick={handleDecrementQuantity}>
-                                <RemoveIcon />
-                            </IconButton>
-                            <Typography className={classes.quantity} align="center" variant="h6">
-                                {quantity}
-                            </Typography>
-                            <IconButton onClick={handleIncrementQuantity}>
-                                <AddIcon />
-                            </IconButton>
-                        </ButtonGroup>
                     </div>
                     <Button className={classes.button} startIcon={<ShoppingCartIcon />} variant="contained" color="secondary" onClick={handleAddToCart}>
                         Add
