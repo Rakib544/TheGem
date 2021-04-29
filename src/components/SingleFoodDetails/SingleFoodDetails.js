@@ -33,7 +33,7 @@ const SingleFoodDetails = () => {
     const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
-        fetch(`http://localhost:8080/singleFood/${id}`)
+        fetch(`https://morning-lake-88471.herokuapp.com/singleFood/${id}`)
             .then(res => res.json())
             .then(data => setSelectedFood(data))
     }, [id])

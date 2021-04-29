@@ -6,7 +6,7 @@ import { useStyles } from './NavBarStyle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import logo from '../../images/logo.png'
 import {getDatabaseCart} from '../LocalStrogeManager/DatabaseCartmanager'
-// import { UserContext } from '../../App';
+import { UserContext } from '../../App';
 
 
 export const NavBar = () => {
@@ -16,7 +16,7 @@ export const NavBar = () => {
         const objArray = Object.keys(savedItems)
         setSavedItem(objArray.length)
     }, [])
-    //   const [loggedUser] = useContext(UserContext)
+      const [loggedUser] = useContext(UserContext)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -72,15 +72,15 @@ export const NavBar = () => {
                 <Button onClick={goToAdminPage}>Admin</Button>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
-                {
-                    //   loggedUser.email ? (
-                    //     <IconButton>
-                    //       <img src={loggedUser.photoURL} alt={loggedUser.name} style={{ width: '30px', borderRadius: '50%' }} />
-                    //     </IconButton>
-                    //   ) : (
-                    //     <Button onClick={goToLoginPage}>Login</Button>
-                    //   )
-                }
+                {/* {
+                      loggedUser.email ? (
+                        <IconButton>
+                          <img src={loggedUser.photoURL} alt={loggedUser.name} style={{ width: '30px', borderRadius: '50%' }} />
+                        </IconButton>
+                      ) : (
+                        <Button onClick={goToLoginPage}>Login</Button>
+                      )
+                } */}
                 <Button onClick={goToLoginPage}>Login</Button>
             </MenuItem>
         </Menu>
@@ -122,6 +122,7 @@ export const NavBar = () => {
                             aria-label="show more"
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
+                            style={{color: '#fff'}}
                             onClick={handleMobileMenuOpen}
                         >
                             <MenuIcon />

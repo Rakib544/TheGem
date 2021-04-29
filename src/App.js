@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import OrderComplete from './components/OrderComplete/OrderComplete';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ProductDetails from './components/ProductDetails/ProductDetails'
 import SingleFoodDetails from './components/SingleFoodDetails/SingleFoodDetails';
 
@@ -29,15 +30,15 @@ const App = () => {
           <Route path="/productDetails">
             <ProductDetails />
           </Route>
-          <Route path="/placeOrder">
+          <PrivateRoute path="/placeOrder">
             <PlaceOrder />
-          </Route>
-          <Route path="/orderComplete">
+          </PrivateRoute>
+          <PrivateRoute path="/orderComplete">
             <OrderComplete />
-          </Route>
-          <Route path="/admin">
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
             <Admin />
-          </Route>
+          </PrivateRoute>
           <Route path="/food/:id">
             <SingleFoodDetails />
           </Route>

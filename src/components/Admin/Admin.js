@@ -39,6 +39,7 @@ const Admin = () => {
     const classes = useStyles();
     let { path, url } = useRouteMatch();
     const history = useHistory()
+
     const goToManagePage = () => {
         history.push(`${url}/manageProducts`)
     }

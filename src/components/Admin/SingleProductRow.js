@@ -9,7 +9,7 @@ const SingleProductRow = ({ product }) => {
 
     const handleDeleteProduct = (id) => {
         const obj = {id}    
-        fetch('http://localhost:8080/deleteFood', {
+        fetch('https://morning-lake-88471.herokuapp.com/deleteFood', {
             method: "DELETE",
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(obj)

@@ -1,13 +1,16 @@
 import { ButtonGroup, Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove'
-import { addToDatabaseCart, getDatabaseCart } from '../LocalStrogeManager/DatabaseCartmanager';
+import { getDatabaseCart } from '../LocalStrogeManager/DatabaseCartmanager';
 
 const useStyles = makeStyles(theme => ({
     buttonGroup: {
         marginLeft: '30px',
         height: '42px',
+        "@media(max-width: 900px)": {
+            marginLeft: '10px'
+        }
     },
     quantity: {
         lineHeight: '40px'
@@ -20,37 +23,30 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const SingleCart = ({ food }) => {
+const SingleCart = ({ food, handleIncrementQuantity, handleDecrementQuantity }) => {
     const classes = useStyles()
     const [quantity, setQuantity] = useState(1)
 
-    const handleDecrementQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1)
-            const localStorageCart = getDatabaseCart()
-            const cartKeys = Object.keys(localStorageCart)
-            const match = cartKeys.find(key => key === food._id)
-            if (match) {
-                addToDatabaseCart(match, quantity - 1)
-            }
-        }
+    useEffect(() => {
+        const localStorageProduct = getDatabaseCart()
+        setQuantity(localStorageProduct[food._id])
+    }, [])
+
+    const addQuantity = () => {
+        const localStorageProduct = getDatabaseCart()
+        setQuantity(localStorageProduct[food._id])
     }
-    const handleIncrementQuantity = () => {
-        setQuantity(quantity + 1)
-        const localStorageCart = getDatabaseCart()
-        const cartKeys = Object.keys(localStorageCart)
-        const match = cartKeys.find(key => key === food._id)
-        if (match) {
-            addToDatabaseCart(match, quantity + 1)
-        }
+    const removeQuantity = () => {
+        const localStorageProduct = getDatabaseCart()
+        setQuantity(localStorageProduct[food._id])
     }
 
     return (
         <Grid container item lg={12} spacing={3} className={classes.grid} alignItems="center">
-            <Grid item lg={3}>
+            <Grid item lg={3} md={3} sm={3} xs={3}>
                 <img src={food.imageURL} alt={food.name} style={{ width: '100%' }} />
             </Grid>
-            <Grid item lg={4}>
+            <Grid item lg={4} md={4} sm={4} xs={4}>
                 <Typography variant="subtitle2">
                     {food.name}
                 </Typography>
@@ -58,15 +54,21 @@ const SingleCart = ({ food }) => {
                     $ {food.price * quantity}
                 </Typography>
             </Grid>
-            <Grid item lg={5}>
+            <Grid item lg={5} md={5} sm={5} xs={5}>
                 <ButtonGroup color="secondary" className={classes.buttonGroup}>
-                    <IconButton onClick={handleDecrementQuantity} size="small">
+                    <IconButton onClick={() => {
+                        handleDecrementQuantity(food._id);
+                        addQuantity();
+                    }} size="small">
                         <RemoveIcon />
                     </IconButton>
                     <Typography className={classes.quantity} align="center" variant="h6">
                         {quantity}
                     </Typography>
-                    <IconButton onClick={handleIncrementQuantity} size="small">
+                    <IconButton onClick={() => {
+                         handleIncrementQuantity(food._id);
+                         removeQuantity()
+                    }} size="small">
                         <AddIcon />
                     </IconButton>
                 </ButtonGroup>

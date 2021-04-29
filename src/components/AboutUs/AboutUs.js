@@ -10,7 +10,10 @@ import homeDeliveryImage from '../../images/architecture-building-city-2047397.p
 
 const useStyles = makeStyles(theme => ({
     container: {
-        padding: '70px 50px'
+        padding: '70px 50px',
+        "@media(max-width: 900px)": {
+            padding: '40px 10px'
+        }
     },
     card: {
         boxShadow: '0 0 0 0',
@@ -36,7 +39,7 @@ const AboutUs = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Iste, quis. Ea aut itaque hic odio optio sed deleniti ab eos.
             </Typography>
             <Grid container spacing={3}>
-                <Grid item lg={4}>
+                <Grid item lg={4} md={4} sm={6} xs={12}>
                     <Card className={classes.card}>
                         <CardActions>
                             <CardMedia>
@@ -61,7 +64,7 @@ const AboutUs = () => {
                         </div>
                     </Card>
                 </Grid>
-                <Grid item lg={4}>
+                <Grid item lg={4} md={4} sm={6} xs={12}>
                     <Card className={classes.card}>
                         <CardActions>
                             <CardMedia>
@@ -86,7 +89,7 @@ const AboutUs = () => {
                         </div>
                     </Card>
                 </Grid>
-                <Grid item lg={4}>
+                <Grid item lg={4} md={4} sm={6} xs={12}>
                     <Card className={classes.card}>
                         <CardActions>
                             <CardMedia>

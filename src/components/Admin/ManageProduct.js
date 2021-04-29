@@ -16,7 +16,7 @@ const ManageProducts = () => {
     // const [showSpinner, setShowSpinner] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:8080/foods')
+        fetch('https://morning-lake-88471.herokuapp.com/foods')
             .then(res => res.json())
             .then(foods => setFoods(foods))
     }, [])
