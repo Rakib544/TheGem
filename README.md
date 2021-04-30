@@ -17,18 +17,24 @@ https://thegem-5d710.web.app/
 5. User can increment and decrement the quantity of the selected foods.   
 	
 ## Front-End Technologies
-* React Js: 17.0.1
+* React Js
 * React Hook Form
-* React Router version: 5.2.0
-* Material Ui version: 4.11.1
+* React Router DOM
+* Material Ui version
+* Firebase
 
 ## Back-End Technology
 * Express Js
+* Express Js
 * MongoDB
-* Firebase
 * Stripe.js
 
 ## Setup
 To run this project, install it locally using npm:
 
+```
+$ cd ../red-onion
+$ npm install
+$ npm start
+```
 ## Back-End Repository
