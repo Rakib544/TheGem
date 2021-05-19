@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
         letterSpacing:"1px",
         fontSize:'16px',
         cursor: 'pointer',
-        border: '2px solid #CA9C5E',
+        border: '2px solid #fff',
     }
 }))
 
